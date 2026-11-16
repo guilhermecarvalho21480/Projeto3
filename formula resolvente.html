@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Fórmula Resolvente</title>
+</head>
+<body>
+
+  <script>
+    let continuar = true;
+
+    while (continuar) {
+      let a;
+
+      // 1. Validação: impede que "a" seja 0 ou um valor não numérico
+      do {
+        a = Number(prompt("Valor de a (não pode ser 0):"));
+        if (a === 0 || isNaN(a)) {
+          alert("Erro: O valor de 'a' deve ser um número diferente de zero.");
+        }
+      } while (a === 0 || isNaN(a));
+
+      let b = Number(prompt("Valor de b:"));
+      let c = Number(prompt("Valor de c:"));
+
+      // Verifica se b ou c não são números válidos
+      if (isNaN(b) || isNaN(c)) {
+        alert("Erro: Por favor, insira apenas números válidos.");
+      } else {
+        let delta = b * b - 4 * a * c;
+
+        if (delta >= 0) {
+          // 2. Arredondamento para 2 casas decimais com .toFixed(2)
+          let x1 = ((-b + Math.sqrt(delta)) / (2 * a)).toFixed(2);
+          let x2 = ((-b - Math.sqrt(delta)) / (2 * a)).toFixed(2);
+          alert("x1 = " + x1 + " e x2 = " + x2);
+        } else {
+          alert("Não existem raízes reais.");
+        }
+      }
+
+      // 3. Pergunta se o utilizador quer fazer outro cálculo
+      continuar = confirm("Deseja calcular outra equação?");
+    }
+  </script>
+
+</body>
+</html>
